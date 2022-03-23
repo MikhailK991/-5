@@ -1,0 +1,15 @@
+using System;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        string Name = "Иосиф";
+        string Name2 = "Сафиров";
+        Console.WriteLine((Name) + (Name2));
+        Console.WriteLine("Ошибка!!!");
+        (Name, Name2) = (Name2, Name);
+        Console.WriteLine((Name) + (Name2));
+        Console.ReadLine();
+    }
+}
