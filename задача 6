@@ -5,10 +5,10 @@ class Program
     static void Main(string[] args)
     {
         int picture = 52;
-        int inARow = 3;
-        int runoff = picture / inARow;
-        int remainder = picture % inARow;
-        Console.WriteLine($" {runoff} рядов заполненых картинками \n Осталась {remainder} картинка");
+        int picturesRow = 3;
+        int numberOfLines = picture / picturesRow;
+        int remainder = picture % picturesRow;
+        Console.WriteLine($" {numberOfLines} рядов заполненых картинками \n Осталась {remainder} картинка");
 
     }
 }
