@@ -1,0 +1,14 @@
+using System;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        int picture = 52;
+        int inARow = 3;
+        int runoff = picture / inARow;
+        int remainder = picture % inARow;
+        Console.WriteLine($" {runoff} рядов заполненых картинками \n Осталась {remainder} картинка");
+
+    }
+}
