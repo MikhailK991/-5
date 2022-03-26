@@ -6,10 +6,11 @@ class Program
     {
         string name1 = "Иосиф";
         string name2 = "Сафиров";
-        Console.WriteLine((name1) + (name2));
+        char space = ' ';
+        Console.WriteLine((name1) + (space) + (name2));
         Console.WriteLine("Ошибка!!!");
         (name1, name2) = (name2, name1);
-        Console.WriteLine((name1) + (name2));
+        Console.WriteLine((name1) + (space) + (name2));
         Console.ReadLine();
     }
 }
