@@ -10,12 +10,11 @@ class Program
         string requestForCrystals = Console.ReadLine();
         int gold = Convert.ToInt32(goldenCoins);
         int crystal = Convert.ToInt32(requestForCrystals);
-        int balanceOfCoins = gold - (crystal * 10);
+        int price = 10;
+        int balanceOfCoins = gold - (crystal * price);
         Console.WriteLine("У вас остолось " + balanceOfCoins + " золотых.");
         Console.WriteLine("У вас есть " + crystal + " кристаллов.");
     }
 }
-
-
 
 
