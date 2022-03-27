@@ -5,13 +5,17 @@ class Program
     static void Main(string[] args)
     {
         Console.WriteLine("Приветствую тебя! Сколько у тебя золотых монет?");
-        string goldCoins = Console.ReadLine();
-        Console.WriteLine("Сколько кристаллов ты хочешь купить? За 1 кристалл возьму 1 золотую!");
-        string buyingCrystais = Console.ReadLine();
-        int gold = Convert.ToInt32(goldCoins);
-        int crystal = Convert.ToInt32(buyingCrystais);
-        int purchaseGold = gold - crystal;
-        Console.WriteLine("У вас остолось " + purchaseGold + " золотых.");
+        string goldenCoins = Console.ReadLine();
+        Console.WriteLine("Сколько кристаллов ты хочешь купить? За 1 кристалл возьму 10 золотых!");
+        string requestForCrystals = Console.ReadLine();
+        int gold = Convert.ToInt32(goldenCoins);
+        int crystal = Convert.ToInt32(requestForCrystals);
+        int balanceOfCoins = gold - (crystal * 10);
+        Console.WriteLine("У вас остолось " + balanceOfCoins + " золотых.");
         Console.WriteLine("У вас есть " + crystal + " кристаллов.");
     }
 }
+
+
+
+
