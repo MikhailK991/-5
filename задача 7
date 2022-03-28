@@ -6,15 +6,14 @@ class Program
     {
         Console.WriteLine("Приветствую тебя! Сколько у тебя золотых монет?");
         string goldenCoins = Console.ReadLine();
-        Console.WriteLine("Сколько кристаллов ты хочешь купить? За 1 кристалл возьму 10 золотых!");
+        int price = 10;
+        Console.WriteLine("Сколько кристаллов ты хочешь купить? За 1 кристалл возьму " + price + "золотых!");
         string requestForCrystals = Console.ReadLine();
         int gold = Convert.ToInt32(goldenCoins);
         int crystal = Convert.ToInt32(requestForCrystals);
-        int price = 10;
         int balanceOfCoins = gold - (crystal * price);
         Console.WriteLine("У вас остолось " + balanceOfCoins + " золотых.");
         Console.WriteLine("У вас есть " + crystal + " кристаллов.");
     }
 }
-
 
