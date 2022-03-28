@@ -4,13 +4,12 @@ class Program
 {
     static void Main(string[] args)
     {
-        string name1 = "Иосиф";
-        string name2 = "Сафиров";
-        char space = ' ';
-        Console.WriteLine((name1) + (space) + (name2));
-        Console.WriteLine("Ошибка!!!");
-        (name1, name2) = (name2, name1);
-        Console.WriteLine((name1) + (space) + (name2));
-        Console.ReadLine();
+        string name = " Строгов";
+        string surname = " Анатолий";
+        Console.WriteLine(name + surname);
+        string fio = name;
+        name = surname;
+        surname = fio;
+        Console.WriteLine(name + surname);
     }
-}
+}  
