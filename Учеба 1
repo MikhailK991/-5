@@ -7,9 +7,8 @@ class Program
         Console.WriteLine("Привет. Что тебя порадует?");
         string userWishes = Console.ReadLine();
         Console.WriteLine("Сколько раз?");
-        int numberOfRepetitions = Convert.ToInt32(Console.ReadLine());
-
-        while (numberOfRepetitions--> 0)
+        
+        for (int numberOfRepetitions = Convert.ToInt32(Console.ReadLine()))
         {
             Console.WriteLine(userWishes);
         }
