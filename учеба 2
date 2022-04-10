@@ -1,0 +1,13 @@
+using System;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        for(int stepCycle = 5; stepCycle < 100; stepCycle += 7)
+        {
+            Console.WriteLine(stepCycle);
+        }
+        // есть четкие границы цикла, поэтому выбран for
+    }
+}
