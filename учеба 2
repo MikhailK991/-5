@@ -4,7 +4,11 @@ class Program
 {
     static void Main(string[] args)
     {
-        for(int stepCycle = 5; stepCycle < 100; stepCycle += 7)
+        int BeginningOfWork = 5;
+        int numberOfDays = 100;
+        int dayOff = 7;
+
+        for(int stepCycle = BeginningOfWork; stepCycle < numberOfDays; stepCycle += dayOff)
         {
             Console.WriteLine(stepCycle);
         }
