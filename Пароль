@@ -18,7 +18,7 @@ class Program
                 Console.WriteLine("59.950036, 30.316636");
                 break;
             }
-            else
+            else if (password != passwordEntry)
             { 
                 Console.WriteLine("Ошибка.");
             }
