@@ -1,0 +1,27 @@
+using System;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        string password = "junior2022";
+        string passwordEntry;
+
+        Console.WriteLine("Введите пароль:");
+
+        for (int attempts = 3; attempts > 0; attempts--)
+        {
+            passwordEntry = Console.ReadLine();
+
+            if (password == passwordEntry)
+            {
+                Console.WriteLine("59.950036, 30.316636");
+                break;
+            }
+            else
+            { 
+                Console.WriteLine("Ошибка.");
+            }
+        }
+    }
+}
