@@ -1,0 +1,17 @@
+using System;
+
+class world
+{
+    static void Main(string[] args)
+    {
+        int namber;
+        Random rand = new Random();
+        namber = rand.Next(1, 101);
+
+        for (int i = 0; i <= namber; i += 3)
+        {
+            Console.WriteLine(i);
+        }
+        Console.WriteLine("Контрольное число: " + namber);
+    }
+}
