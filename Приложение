@@ -1,0 +1,49 @@
+using System;
+
+class world
+    {
+     static void Main(string[] args)
+     {
+        string name, mail, password;
+        string choice;
+
+
+        Console.WriteLine("Вам нужно зарегестироваться: \nПожалуйста, введите ваше имя: ");
+        name = Console.ReadLine();
+        Console.WriteLine("Ваша почта: ");
+        mail = Console.ReadLine();
+        Console.WriteLine("Пароль: ");
+        password = Console.ReadLine();
+
+        Console.WriteLine("Добро пожаловать" + name);
+        Console.WriteLine("Теперь вы можете: \nСыграть в игру, угадай число. Для этого напишите - Игра \nПосчиталь прибыль по вашему депозиту. Напишите - Депозит " +
+            "\n");
+        choice = Console.ReadLine();
+
+        switch (choice)
+        {
+            case "Игра":
+                int lowerLimit = 0;
+                int upperLimit = 101;
+
+                Random random = new Random();
+                random.Next(lowerLimit, upperLimit);
+                int namber = Convert.ToInt32(random);
+
+                Console.WriteLine("У вас всего 5 попыток угадать число, удачи!");
+
+
+
+
+
+
+                break;
+            case "Депозит":
+                Console.WriteLine();
+                break;
+                
+        }
+
+     }
+
+    }
