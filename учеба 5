@@ -1,125 +1,138 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-class Program
+namespace Учеба
 {
-    static void Main(string[] args)
+    class Program
     {
-        int rubToUsd = 74;
-        int rubToEur = 81;
-        int usdTorub = 73;
-        int usdToEur = 2;
-        int eurToRub = 80; 
-        int eurToUsd = 1;
-        string userInpyt;
-
-        Console.WriteLine("Добро пожаловать в обменник валют!");
-        Console.WriteLine("Вы можете выполнить операцию обмена с рублем, долларом и евро.");
-        Console.WriteLine("Сколько у вас рублей?");
-        float ruble = Convert.ToSingle(Console.ReadLine());
-        Console.WriteLine("Сколько у вас долларов?");
-        float dollar = Convert.ToSingle(Console.ReadLine());
-        Console.WriteLine("Сколько у вас евро?");
-        float euro = Convert.ToSingle(Console.ReadLine());
-        float currencyCount;
-
-        Console.WriteLine("1 - Если вы хотите поменять рубли на доллары. \n2 - Если вы хотите поменять рубли на евро.");
-        Console.WriteLine("3 - Если вы хотите поменять доллары на рубли. \n4 - Если вы хотите поменять доллары на евро.");
-        Console.WriteLine("5 - Если вы хотите поменять евро на рубли. \n6 - Если вы хотите поменять евро на доллары.");
-        userInpyt = Console.ReadLine();
-
-        switch (userInpyt)
+        static void Main(string[] args)
         {
+            /*На курсах выполнялся обмен таким образом, как представлен ниже.
+            *Вы говорите, что такой способ не верен, нужно учитывать функции.
+            *Функции, я еще не изучал. Пробежав мильком по теме, ответ не нашел.
+            *Вопрос: В какую тему функций нужно углубиться, что бы исправить данное ДЗ?
+            *Спасибо.
+            */
+            int rubToUsd = 74;
+            int rubToEur = 81;
+            int usdTorub = 73;
+            int usdToEur = 2;
+            int eurToRub = 80;
+            int eurToUsd = 1;
+            string userInpyt;
 
-            case "1":
-                Console.WriteLine("Обмен рублий на доллары. \nСколько вы хотите обменять?");
-                currencyCount = Convert.ToSingle(Console.ReadLine());
+            Console.WriteLine("Добро пожаловать в обменник валют!");
+            Console.WriteLine("Вы можете выполнить операцию обмена с рублем, долларом и евро.");
+            Console.WriteLine("Сколько у вас рублей?");
+            float ruble = Convert.ToSingle(Console.ReadLine());
+            Console.WriteLine("Сколько у вас долларов?");
+            float dollar = Convert.ToSingle(Console.ReadLine());
+            Console.WriteLine("Сколько у вас евро?");
+            float euro = Convert.ToSingle(Console.ReadLine());
+            float currencyCount;
 
-                if (ruble >= currencyCount)
-                {
-                    ruble -= currencyCount * rubToUsd;
-                    dollar += currencyCount;
-                }
-                else
-                {
-                    Console.WriteLine("Недостаточно рублей.");
-                }
-                break;
+            Console.WriteLine("1 - Если вы хотите поменять рубли на доллары. \n2 - Если вы хотите поменять рубли на евро.");
+            Console.WriteLine("3 - Если вы хотите поменять доллары на рубли. \n4 - Если вы хотите поменять доллары на евро.");
+            Console.WriteLine("5 - Если вы хотите поменять евро на рубли. \n6 - Если вы хотите поменять евро на доллары.");
+            userInpyt = Console.ReadLine();
 
-            case "2":
-                Console.WriteLine("Обмен рубли на евро. \nСколько вы хотите обменять?");
-                currencyCount = Convert.ToSingle(Console.ReadLine());
+            switch (userInpyt)
+            {
 
-                if (ruble >= currencyCount)
-                {
-                    ruble -= currencyCount * rubToEur;
-                    euro += currencyCount;
-                }
-                else
-                {
-                    Console.WriteLine("Недостаточно рублей.");
-                }
-                break;
+                case "1":
+                    Console.WriteLine("Обмен рублий на доллары. \nСколько вы хотите обменять?");
+                    currencyCount = Convert.ToSingle(Console.ReadLine());
 
-            case "3":
-                Console.WriteLine("Обмен долларов на рубли. \nСколько вы хотите обменять?");
-                currencyCount = Convert.ToSingle(Console.ReadLine());
+                    if (ruble >= currencyCount)
+                    {
+                        ruble -= currencyCount * rubToUsd;
+                        dollar += currencyCount;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Недостаточно рублей.");
+                    }
+                    break;
 
-                if (dollar >= currencyCount)
-                {
-                    dollar -= currencyCount;
-                    ruble += currencyCount * usdTorub;
-                }
-                else
-                {
-                    Console.WriteLine("Недостаточно долларов.");
-                }
-                break;
+                case "2":
+                    Console.WriteLine("Обмен рубли на евро. \nСколько вы хотите обменять?");
+                    currencyCount = Convert.ToSingle(Console.ReadLine());
 
-            case "4":
-                Console.WriteLine("Обмен доллары на евро. \nСколько вы хотите обменять?");
-                currencyCount = Convert.ToSingle(Console.ReadLine());
+                    if (ruble >= currencyCount)
+                    {
+                        ruble -= currencyCount * rubToEur;
+                        euro += currencyCount;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Недостаточно рублей.");
+                    }
+                    break;
 
-                if (dollar >= currencyCount)
-                {
-                    dollar -= currencyCount;
-                    euro += currencyCount / usdToEur;
-                }
-                else
-                {
-                    Console.WriteLine("Недостаточно долларов.");
-                }
-                break;
+                case "3":
+                    Console.WriteLine("Обмен долларов на рубли. \nСколько вы хотите обменять?");
+                    currencyCount = Convert.ToSingle(Console.ReadLine());
 
-            case "5":
-                Console.WriteLine("Обмен евро на рубли. \nСколько вы хотите обменять?");
-                currencyCount = Convert.ToSingle(Console.ReadLine());
+                    if (dollar >= currencyCount)
+                    {
+                        dollar -= currencyCount;
+                        ruble += currencyCount * usdTorub;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Недостаточно долларов.");
+                    }
+                    break;
 
-                if (euro >= currencyCount)
-                {
-                    euro -= currencyCount;
-                    ruble += currencyCount * eurToRub;
-                }
-                else
-                {
-                    Console.WriteLine("Недостаточно евро.");
-                }
-                break;
+                case "4":
+                    Console.WriteLine("Обмен доллары на евро. \nСколько вы хотите обменять?");
+                    currencyCount = Convert.ToSingle(Console.ReadLine());
 
-            case "6":
-                Console.WriteLine("Обмен евро на доллары. \nСколько вы хотите обменять?");
-                currencyCount = Convert.ToSingle(Console.ReadLine());
+                    if (dollar >= currencyCount)
+                    {
+                        dollar -= currencyCount;
+                        euro += currencyCount / usdToEur;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Недостаточно долларов.");
+                    }
+                    break;
 
-                if (euro >= currencyCount)
-                {
-                    euro -= currencyCount;
-                    dollar += currencyCount * eurToUsd;
-                }
-                else
-                {
-                    Console.WriteLine("Недостаточно евро.");
-                }
-                break;
+                case "5":
+                    Console.WriteLine("Обмен евро на рубли. \nСколько вы хотите обменять?");
+                    currencyCount = Convert.ToSingle(Console.ReadLine());
+
+                    if (euro >= currencyCount)
+                    {
+                        euro -= currencyCount;
+                        ruble += currencyCount * eurToRub;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Недостаточно евро.");
+                    }
+                    break;
+
+                case "6":
+                    Console.WriteLine("Обмен евро на доллары. \nСколько вы хотите обменять?");
+                    currencyCount = Convert.ToSingle(Console.ReadLine());
+
+                    if (euro >= currencyCount)
+                    {
+                        euro -= currencyCount;
+                        dollar += currencyCount * eurToUsd;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Недостаточно евро.");
+                    }
+                    break;
+            }
+            Console.WriteLine($"Ваш баланс {ruble} рублей, {dollar} долларов, {euro} евро.");
         }
-        Console.WriteLine($"Ваш баланс {ruble} рублей, {dollar} долларов, {euro} евро.");
     }
 }
