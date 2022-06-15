@@ -1,28 +1,37 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-class world
+namespace Учеба
 {
-    static void Main(string[] args)
+    class Program
     {
-        int namber, upperLimit, lowerLimit;
-        int firstNumber = 3;
-        int secondNumber = 5;
-
-        upperLimit = 101;
-        lowerLimit = 0;
-
-        Random random = new Random();
-        namber = random.Next(lowerLimit, upperLimit);
-
-        for (int i = 0; i <= namber; i ++)
+        static void Main(string[] args)
         {
-            if (i % firstNumber == 0 || i % secondNumber == 0)
+            int namber, upperLimit, lowerLimit;
+            int firstNumber = 3;
+            int secondNumber = 5;
+            int sum = 0;
+
+            Random random = new Random();
+            upperLimit = 101;
+            lowerLimit = 0;
+            namber = random.Next(lowerLimit, upperLimit);
+            
+
+            for (int i = 0; i <= namber; i++)
             {
-                Console.WriteLine(i);
+                if (i % firstNumber == 0 || i % secondNumber == 0)
+                {
+                    sum += i;
+                }
+
             }
+            Console.WriteLine(sum);
+            Console.WriteLine("Контрольное число: " + namber);
+
         }
-
-        Console.WriteLine("Контрольное число: " + namber);
-
     }
 }
