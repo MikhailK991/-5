@@ -10,30 +10,34 @@ namespace Учеба
     {
         static void Main(string[] args)
         {
-            bool exit = true;
+            bool goOut = true;
+            int compietion = 50;
             Random random = new Random();
-            Console.WriteLine("Добро пожаловать. Вы можете: \n\n1 - Угадать число.\n\n2 - Выход.\n");
+
+            Console.WriteLine("Добро пожаловать. Вы можете: \n\n1 - Угадать число. до " + compietion + " раз. \n\n2 - Выход.\n");
             Console.Write("Что вы выбрали: ");
 
-            while (exit)
+            int choice = Convert.ToInt32(Console.ReadLine());
+
+            while (compietion -- > 0 || goOut) 
             {
-                switch (Convert.ToInt32(Console.ReadLine()))
+                switch (choice)
                 {
                     case 1:
                         int attempts = 3;
                         int maximumNumber = 101;
                         int minimumNumber = 1;
-                        int number = random.Next(minimumNumber,maximumNumber);
-                        int minimumAisle, maximumAisle;
-
-                        minimumAisle = random.Next(number - 10, number);
-                        maximumAisle = random.Next(number + 1, number + 10);
+                        int number = random.Next(minimumNumber, maximumNumber);
+                        int minimumAisle = random.Next(number - 10, number);
+                        int maximumAisle = random.Next(number + 1, number + 10);
 
                         Console.WriteLine($"У вас {attempts} попытки. Число в пределах от {minimumAisle} по {maximumAisle}\n");
+
                         for (int i = 0; i < attempts; i++)
                         {
                             Console.Write("Ваш вариант: ");
-                        int option = Convert.ToInt32(Console.ReadLine());
+
+                            int option = Convert.ToInt32(Console.ReadLine());
 
                             if (option == number)
                             {
@@ -41,17 +45,13 @@ namespace Учеба
                                 Console.WriteLine("Хотите попробовать еще, нажмите: 1, для выхода: 2\n");
                                 break;
                             }
-
-                            
                         }
-                        Console.WriteLine("\nУвы, в следующий раз, у вас все получится!\nЧисто было " + number );
+                        Console.WriteLine("\nУвы, в следующий раз, у вас все получится!\nЧисто было " + number);
                         Console.WriteLine("\nХотите попробовать еще, нажмите: 1, для выхода: 2");
-
                         break;
                     case 2:
-                        exit = false;
+                        goOut = false;
                         break;
-
                 }
             }
             Console.ReadKey();
