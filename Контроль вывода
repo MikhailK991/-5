@@ -1,0 +1,60 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Учеба
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            bool exit = true;
+            Random random = new Random();
+            Console.WriteLine("Добро пожаловать. Вы можете: \n\n1 - Угадать число.\n\n2 - Выход.\n");
+            Console.Write("Что вы выбрали: ");
+
+            while (exit)
+            {
+                switch (Convert.ToInt32(Console.ReadLine()))
+                {
+                    case 1:
+                        int attempts = 3;
+                        int maximumNumber = 101;
+                        int minimumNumber = 1;
+                        int number = random.Next(minimumNumber,maximumNumber);
+                        int minimumAisle, maximumAisle;
+
+                        minimumAisle = random.Next(number - 10, number);
+                        maximumAisle = random.Next(number + 1, number + 10);
+
+                        Console.WriteLine($"У вас {attempts} попытки. Число в пределах от {minimumAisle} по {maximumAisle}\n");
+                        for (int i = 0; i < attempts; i++)
+                        {
+                            Console.Write("Ваш вариант: ");
+                        int option = Convert.ToInt32(Console.ReadLine());
+
+                            if (option == number)
+                            {
+                                Console.WriteLine("Поздравляем, вы угодали!\n");
+                                Console.WriteLine("Хотите попробовать еще, нажмите: 1, для выхода: 2\n");
+                                break;
+                            }
+
+                            
+                        }
+                        Console.WriteLine("\nУвы, в следующий раз, у вас все получится!\nЧисто было " + number );
+                        Console.WriteLine("\nХотите попробовать еще, нажмите: 1, для выхода: 2");
+
+                        break;
+                    case 2:
+                        exit = false;
+                        break;
+
+                }
+            }
+            Console.ReadKey();
+        }
+    }
+}
