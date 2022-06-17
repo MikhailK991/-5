@@ -1,49 +1,96 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-class world
+namespace Учеба
+{
+    class Program
     {
-     static void Main(string[] args)
-     {
-        string name, mail, password;
-        string choice;
-
-
-        Console.WriteLine("Вам нужно зарегестироваться: \nПожалуйста, введите ваше имя: ");
-        name = Console.ReadLine();
-        Console.WriteLine("Ваша почта: ");
-        mail = Console.ReadLine();
-        Console.WriteLine("Пароль: ");
-        password = Console.ReadLine();
-
-        Console.WriteLine("Добро пожаловать" + name);
-        Console.WriteLine("Теперь вы можете: \nСыграть в игру, угадай число. Для этого напишите - Игра \nПосчиталь прибыль по вашему депозиту. Напишите - Депозит " +
-            "\n");
-        choice = Console.ReadLine();
-
-        switch (choice)
+        static void Main(string[] args)
         {
-            case "Игра":
-                int lowerLimit = 0;
-                int upperLimit = 101;
-
-                Random random = new Random();
-                random.Next(lowerLimit, upperLimit);
-                int namber = Convert.ToInt32(random);
-
-                Console.WriteLine("У вас всего 5 попыток угадать число, удачи!");
+            string name, mail, password, repeatPassword;
+            bool GoOut = true;
+            Random random = new Random();
 
 
+            Console.Write("Вам нужно зарегестироваться. \n\nПожалуйста, введите ваше имя: ");
+            name = Console.ReadLine();
+            Console.Write("\nВаша почта: ");
+            mail = Console.ReadLine();
+            Console.Write("\nПароль: ");
+            password = Console.ReadLine();
+            Console.Write("Повторите пароль: ");
+            repeatPassword = Console.ReadLine();
+
+            while (password != repeatPassword)
+            {
+                if (password == repeatPassword)
+                {
+                    Console.WriteLine("Отлично, пароль установлен.");
+                }
+                else
+                {
+                    Console.WriteLine("Извените, пароль не совподает. Повторите попытку.");
+                    Console.Write("\nПароль: ");
+                    password = Console.ReadLine();
+                    Console.Write("Повторите пароль: ");
+                    repeatPassword = Console.ReadLine();
+                }
+            }
+
+            Console.WriteLine("\nДобро пожаловать " + name);
+            Console.WriteLine("Теперь вы можете: \n\n1 - Сыграть в игру, угадай число.\n2 - Посчиталь прибыль по вашему депозиту.\n3 - Выход.");
+            Console.Write("\nКакой раздел вы выбрали: ");
+            int choice = Convert.ToInt32(Console.ReadLine());
+
+            while (GoOut)
+            {
+                switch (choice)
+                {
+                    case 1:
+                        int lowerLimit = 0;
+                        int upperLimit = 101;
+                        int number = random.Next(lowerLimit, upperLimit);
+                        int attempts = 3;
+                        int minimumAisle = random.Next(number - 8, number);
+                        int maximumAisle = random.Next(number + 1, number + 8);
+
+                        Console.WriteLine("У вас всего " + attempts + " попытки угадать число, удачи! ");
+                        Console.WriteLine($"Это число от {minimumAisle} по {maximumAisle}");
 
 
+                        while (attempts-- > 0)
+                        {
+                            Console.Write("\nВаш вариант: ");
+                            int option = Convert.ToInt32(Console.ReadLine());
+
+                            if (option == number)
+                            {
+                                Console.WriteLine("Отлично, вы угодали!\nЭто число: " + number);
+                                Console.WriteLine("Какой раздел вы выбрали: ");
+                                break;
+                            }
+                        }
+                        Console.WriteLine("\nУвы. Повезет в следующий раз!\nЭто число было: " + number);
+                        Console.WriteLine("Какой раздел вы выбрали: ");
 
 
-                break;
-            case "Депозит":
-                Console.WriteLine();
-                break;
-                
+                        break;
+                    case 2:
+                        Console.WriteLine(" ghbdtn");
+                        break;
+                    case 3:
+                        GoOut = false;
+                        break;
+
+                }
+                Console.ReadKey();
+
+            }
+            Console.Clear();
         }
 
-     }
-
     }
+}
