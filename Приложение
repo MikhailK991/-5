@@ -11,10 +11,10 @@ namespace Учеба
         static void Main(string[] args)
         {
             string name, mail, password, repeatPassword;
+            int choice;
             int passwordAttempts = 3;
-            bool GoOut = true;
+            bool goOut = true;
             Random random = new Random();
-
 
             Console.Write("Вам нужно зарегестироваться. \n\nПожалуйста, введите ваше имя: ");
             name = Console.ReadLine();
@@ -40,13 +40,12 @@ namespace Учеба
                     repeatPassword = Console.ReadLine();
                 }
             }
-
             Console.WriteLine("\nДобро пожаловать " + name);
             Console.WriteLine("Теперь вы можете: \n\n1 - Сыграть в игру, угадай число.\n2 - Посчиталь прибыль по вашему депозиту.\n3 - Выход.");
             Console.Write("\nКакой раздел вы выбрали: ");
-            int choice = Convert.ToInt32(Console.ReadLine());
+            choice = Convert.ToInt32(Console.ReadLine());
 
-            while (GoOut)
+            while (goOut)
             {
                 switch (choice)
                 {
@@ -57,15 +56,15 @@ namespace Учеба
                         int attempts = 3;
                         int minimumAisle = random.Next(number - 2, number);
                         int maximumAisle = random.Next(number + 1, number + 2);
+                        int option;
 
                         Console.WriteLine("У вас всего " + attempts + " попытки угадать число, удачи! ");
                         Console.WriteLine($"Это число от {minimumAisle} по {maximumAisle}");
 
-
                         while (attempts-- > 0)
                         {
                             Console.Write("\nВаш вариант: ");
-                            int option = Convert.ToInt32(Console.ReadLine());
+                            option = Convert.ToInt32(Console.ReadLine());
 
                             if (option == number)
                             {
@@ -82,12 +81,10 @@ namespace Учеба
                             }
                         }
                         break;
-
                     case 2:
                         string colorSelection, passwordСheck;
 
                         Console.Write("\nДля изменения цвета строки, необходимо подтвердите паролем, у вас " + passwordAttempts + " попытки.");
-
 
                         for (int i = 0; i < passwordAttempts; i++)
                         {
@@ -102,7 +99,6 @@ namespace Учеба
                             else
                             {
                                 Console.WriteLine("У вас осталось " + (passwordAttempts - i - 1) + " попыток.");
-                                
 
                                 if (i == 2)
                                 {
@@ -111,7 +107,6 @@ namespace Учеба
                                     choice = Convert.ToInt32(Console.ReadLine());
                                 }
                             }
-                           
                         }
 
                         Console.WriteLine("\nВы можете поменять цвет строки на: Красный, Синий, Зеленый. \nКакой цвет вы выбрали? ");
@@ -132,17 +127,13 @@ namespace Учеба
                         Console.Write("Какой раздел вы выбрали: ");
                         choice = Convert.ToInt32(Console.ReadLine());
                         break;
-
                     case 3:
-                        GoOut = false;
+                        goOut = false;
                         break;
-
                 }
                 Console.ReadKey();
-
             }
             Console.Clear();
         }
-
     }
 }
