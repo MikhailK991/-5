@@ -11,6 +11,7 @@ namespace Учеба
         static void Main(string[] args)
         {
             string name, mail, password, repeatPassword;
+            int passwordAttempts = 3;
             bool GoOut = true;
             Random random = new Random();
 
@@ -54,8 +55,8 @@ namespace Учеба
                         int upperLimit = 101;
                         int number = random.Next(lowerLimit, upperLimit);
                         int attempts = 3;
-                        int minimumAisle = random.Next(number - 8, number);
-                        int maximumAisle = random.Next(number + 1, number + 8);
+                        int minimumAisle = random.Next(number - 2, number);
+                        int maximumAisle = random.Next(number + 1, number + 2);
 
                         Console.WriteLine("У вас всего " + attempts + " попытки угадать число, удачи! ");
                         Console.WriteLine($"Это число от {minimumAisle} по {maximumAisle}");
@@ -69,18 +70,69 @@ namespace Учеба
                             if (option == number)
                             {
                                 Console.WriteLine("Отлично, вы угодали!\nЭто число: " + number);
-                                Console.WriteLine("Какой раздел вы выбрали: ");
+                                Console.Write("Какой раздел вы выбрали: ");
+                                choice = Convert.ToInt32(Console.ReadLine());
                                 break;
                             }
+                            else if (attempts == 0)
+                            {
+                                Console.WriteLine("\nУвы. Повезет в следующий раз!\nЭто число было: " + number);
+                                Console.Write("Какой раздел вы выбрали: ");
+                                choice = Convert.ToInt32(Console.ReadLine());
+                            }
                         }
-                        Console.WriteLine("\nУвы. Повезет в следующий раз!\nЭто число было: " + number);
-                        Console.WriteLine("Какой раздел вы выбрали: ");
-
-
                         break;
+
                     case 2:
-                        Console.WriteLine(" ghbdtn");
+                        string colorSelection, passwordСheck;
+
+                        Console.Write("\nДля изменения цвета строки, необходимо подтвердите паролем, у вас " + passwordAttempts + " попытки.");
+
+
+                        for (int i = 0; i < passwordAttempts; i++)
+                        {
+                            Console.Write("\nВведите пароль: ");
+                            passwordСheck = Console.ReadLine();
+
+                            if (password == passwordСheck)
+                            {
+                                Console.WriteLine("\nДоступ открыт. Вы можете изменить цвет.");
+                                break;
+                            }
+                            else
+                            {
+                                Console.WriteLine("У вас осталось " + (passwordAttempts - i - 1) + " попыток.");
+                                
+
+                                if (i == 2)
+                                {
+                                    Console.WriteLine("\nИзменение цвета, заблокировано.");
+                                    Console.Write("\nКакой раздел вы выбрали: ");
+                                    choice = Convert.ToInt32(Console.ReadLine());
+                                }
+                            }
+                           
+                        }
+
+                        Console.WriteLine("\nВы можете поменять цвет строки на: Красный, Синий, Зеленый. \nКакой цвет вы выбрали? ");
+                        colorSelection = Console.ReadLine();
+
+                        if (colorSelection == "Красный")
+                        {
+                            Console.ForegroundColor = ConsoleColor.Red;
+                        }
+                        else if (colorSelection == "Синий")
+                        {
+                            Console.ForegroundColor = ConsoleColor.Blue;
+                        }
+                        else if (colorSelection == "Зеленый")
+                        {
+                            Console.ForegroundColor = ConsoleColor.Green;
+                        }
+                        Console.Write("Какой раздел вы выбрали: ");
+                        choice = Convert.ToInt32(Console.ReadLine());
                         break;
+
                     case 3:
                         GoOut = false;
                         break;
