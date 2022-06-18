@@ -1,0 +1,70 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Учеба
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Random random = new Random();
+            int heroHealth = 3000;
+            int heroPower = random.Next(100,300);
+            int heroDefense = random.Next(100,200);
+            int heroAgility = random.Next(150,300);
+            int heroAbility;
+
+            int villainHealth = 10000;
+            int villainPower = random.Next(200,500);
+            int villainDefense = random.Next(150,300);
+            int villainsAgility = random.Next(50, 100);
+            int villainAbility;
+
+            Console.Write("Я наконец нашел тебя Гаурон!\nСегодня я смогу иполнить свою клятву. Я убью тебя, и все мои братья, смогут упакоились с миром!");
+            Console.Write("\nЯ Эгур, ты помнишь меня? В тот день, когда ты... ");
+            Console.Write("\n\nУмолкни, щенок! Я не помню тебя, и про то, о чем ты там мелешь! Я не запоминаю всякую пыль под своими ногами!");
+            Console.Write("\nБратья, клятва, месть, смешно! Ты из-за этой ерунды пришел суда сдохнуть? Будь по твоему, я помогу с ними соедениться!");
+            Console.WriteLine("\n\n\"Мой путь к тебе был таким долгим и тяжелым, я уже не тот щенок каким был в тот день\" \nЯ убью тебя!");
+
+            Console.WriteLine($"Герой: {heroHealth}хп, {heroPower}сила, {heroDefense}броня, {heroAgility}ловкость.");
+            Console.WriteLine($"Злодей: {villainHealth}хп, {villainPower}сила, {villainDefense}броня, {villainsAgility}ловкость.");
+
+            while (heroHealth > 0 && villainHealth > 0)
+            {
+                heroHealth -= random.Next(0, villainPower) / heroAgility * heroDefense;
+                villainHealth -= random.Next(0, heroPower) / villainsAgility * villainDefense;
+
+                Console.WriteLine("\nЭгур" + heroHealth);
+                Console.WriteLine("Гаурон:" + villainHealth);
+
+                Console.Write("Герой ипользует: ");
+                heroAbility = Convert.ToInt32(Console.ReadLine());
+                Console.Write("Злодей ипользует: ");
+                villainAbility = Convert.ToInt32(Console.ReadLine());
+                switch ()
+                {
+
+                }
+                Console.ReadKey();
+            }
+            
+
+            if (heroHealth <= 0 && villainHealth <= 0)
+            {
+                Console.WriteLine("Они согли забрать жизни, друг у друга.");
+            }
+            else if (villainHealth <= 0)
+            {
+                Console.WriteLine("Братья мои, теперь вы можете покоится с миром! Моя клятва перед вами исполнена.");
+            }
+            else if (heroHealth <= 0)
+            {
+                Console.WriteLine("Вот и еще один глупец сдох! Как там его звали.. а к черту, не помню.\nНо было весело!");
+            }
+
+        }
+    }
+}
