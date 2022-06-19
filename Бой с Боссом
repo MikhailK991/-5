@@ -30,14 +30,26 @@ namespace Учеба
 
             string ability;
             int heroHealth = 5000;
-            int heroPower = random.Next(200, 300);
-            int heroDefense = random.Next(200, 350);
-            int heroAgility = random.Next(250, 300);
+            int heroMinimumAttack = 200;
+            int heroMaximumAttack = 300;
+            int heroPower = random.Next(heroMinimumAttack, heroMaximumAttack);
+            int minimumHeroArmor = 200;
+            int maximumHeroArmor = 350;
+            int heroDefense = random.Next(minimumHeroArmor, maximumHeroArmor);
+            int heroMinimumAgility = 200;
+            int heroMaximumAgility = 350;
+            int heroAgility = random.Next(heroMinimumAgility, heroMaximumAgility);
 
             int villainHealth = 20000;
-            int villainPower = random.Next(600, 700);
-            int villainDefense = random.Next(200, 300);
-            int villainsAgility = random.Next(50, 100);
+            int villainMinimalAttack = 600;
+            int villainMaximumAttack = 700;
+            int villainPower = random.Next(villainMinimalAttack, villainMaximumAttack);
+            int minimumVillainArmor = 200;
+            int maximumVillainArmor = 300;
+            int villainDefense = random.Next(minimumVillainArmor, maximumVillainArmor);
+            int villainMinimumAgility = 50;
+            int villainMaximumAgility = 100;
+            int villainsAgility = random.Next(villainMinimumAgility, villainMaximumAgility);
 
             Console.Write("Я наконец нашел тебя Гаурон!\nСегодня я могу исполнить свою клятву. Я убью тебя, и все мои братья, смогут упокоились с миром!");
             Console.Write("\nЯ Эгур, ты помнишь меня? В тот день, когда ты... ");
@@ -150,4 +162,3 @@ namespace Учеба
         }
     }
 }
-
