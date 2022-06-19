@@ -11,6 +11,23 @@ namespace Учеба
         static void Main(string[] args)
         {
             Random random = new Random();
+            int hit, hardHit, superKick, megaPunch;
+            hit = 500;
+            hardHit = 1000;
+            superKick = 3000;
+            megaPunch = 4000;
+            int treatment = 2500;
+            int armorBoost = 3;
+            int powerAmplification = 3;
+            int agilityBoost = 2;
+            int armorReduction = 2;
+            int attackWeakening = 2;
+            int alteredHeroPower = 500;
+            int modifiedHeroArmor = 500;
+            int modifiedHerosAgility = 450;
+            int changedEnemyStrength = 350;
+            int modifiedEnemyArmor = 150;
+
             string ability;
             int heroHealth = 5000;
             int heroPower = random.Next(200, 300);
@@ -29,15 +46,15 @@ namespace Учеба
             Console.WriteLine("\n\n\"Мой путь к тебе был таким долгим и тяжелым, я уже не тот щенок каким был в тот день\" \nЯ убью тебя!");
 
             Console.WriteLine("\nНавыки:\n1 - Кривое зеркало \"Наносимый урон возвращается атакующему\"");
-            Console.WriteLine("2 - Стальная кожа \"Утраивает броню * 3\"");
-            Console.WriteLine("3 - Молитва \"Восстанавливает 2500хп\"");
-            Console.WriteLine("4 - Стальные мускулы \"Увеличивает урон * 3\"");
-            Console.WriteLine("5 - Малекулярное расщипление \"Наносит противнику урон 3000хп, можно испольговать только после (стальная кожа) и (стальные мускулы)\"");
-            Console.WriteLine("6 - Легкость ветра \"Повышает ловкость * 2\"");
-            Console.WriteLine("7 - Землетрясение \"Наносит урон 500хп\"");
-            Console.WriteLine("8 - Кислотное дыхание \"Разъедает броню противника, защита / 2\"");
-            Console.WriteLine("9 - Привет, из бездны\" наносит -1000хп противнику и понижает его атаку / 2, можно использовать только после (кислотное дыхание)\"");
-            Console.WriteLine("10 - Шепот смерти \"Наносит урон всему живому по 4000хп, если использовано (Легкость ветра) и (привет, из бездны)\"");
+            Console.WriteLine("2 - Стальная кожа \"Утраивает броню * " + armorBoost + "\"");
+            Console.WriteLine("3 - Молитва \"Восстанавливает " + treatment + "хп\"");
+            Console.WriteLine("4 - Стальные мускулы \"Увеличивает урон * " + powerAmplification + "\"");
+            Console.WriteLine("5 - Малекулярное расщипление \"Наносит противнику урон " + superKick + "хп, можно испольговать только после (стальная кожа) и (стальные мускулы)\"");
+            Console.WriteLine("6 - Легкость ветра \"Повышает ловкость * " + agilityBoost + "\"");
+            Console.WriteLine("7 - Землетрясение \"Наносит урон" + hit +"хп\"");
+            Console.WriteLine("8 - Кислотное дыхание \"Разъедает броню противника, защита / " + armorReduction + "\"");
+            Console.WriteLine("9 - Привет, из бездны\" наносит " + hardHit + "хп противнику и понижает его атаку / " + attackWeakening + ", можно использовать только после (кислотное дыхание)\"");
+            Console.WriteLine("10 - Шепот смерти \"Наносит урон всему живому по " + megaPunch + "хп, если использовано (Легкость ветра) и (привет, из бездны)\"");
 
             Console.WriteLine($"Эгур: {heroHealth}хп, {heroPower}сила, {heroDefense}броня, {heroAgility}ловкость.");
             Console.WriteLine($"Гаурон: {villainHealth}хп, {villainPower}сила, {villainDefense}броня, {villainsAgility}ловкость.");
@@ -59,20 +76,20 @@ namespace Учеба
                         heroHealth -= villainPower;
                         break;
                     case "2":
-                        heroDefense *= 3;
+                        heroDefense *= armorBoost;
                         break;
                     case "3":
-                        heroHealth += 2500;
+                        heroHealth += treatment;
                         break;
                     case "4":
-                        heroPower *= 3;
+                        heroPower *= powerAmplification;
                         break;
                     case "5":
-                        if (heroDefense > 500)
+                        if (heroDefense > modifiedHeroArmor)
                         {
-                            if (heroPower > 500)
+                            if (heroPower > alteredHeroPower)
                             {
-                                villainHealth -= 3000;
+                                villainHealth -= superKick;
                             }
                         }
                         else
@@ -81,19 +98,19 @@ namespace Учеба
                         }
                         break;
                     case "6":
-
+                        heroAgility *= agilityBoost;
                         break;
                     case "7":
-                        villainHealth -= 500;
+                        villainHealth -= hit;
                         break;
                     case "8":
-                        villainDefense /= 2;
+                        villainDefense /= armorReduction;
                         break;
                     case "9":
-                        if (villainDefense <= 150)
+                        if (villainDefense <= modifiedEnemyArmor)
                         {
-                            villainHealth -= 1000;
-                            villainPower /= 2;
+                            villainHealth -= hardHit;
+                            villainPower /= attackWeakening;
                         }
                         else
                         {
@@ -101,12 +118,12 @@ namespace Учеба
                         }
                         break;
                     case "10":
-                        if (heroAgility > 450)
+                        if (heroAgility > modifiedHerosAgility)
                         {
-                            if (villainPower <= 350)
+                            if (villainPower <= changedEnemyStrength)
                             {
-                                heroHealth -= 4000;
-                                villainHealth -= 4000;
+                                heroHealth -= megaPunch;
+                                villainHealth -= megaPunch;
                             }
                         }
                         else
@@ -133,3 +150,4 @@ namespace Учеба
         }
     }
 }
+
