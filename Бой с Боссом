@@ -11,23 +11,33 @@ namespace Учеба
         static void Main(string[] args)
         {
             Random random = new Random();
-            int heroHealth = 3000;
-            int heroPower = random.Next(100,300);
-            int heroDefense = random.Next(100,200);
-            int heroAgility = random.Next(150,300);
-            int heroAbility;
+            string ability;
+            int heroHealth = 5000;
+            int heroPower = random.Next(200, 300);
+            int heroDefense = random.Next(200, 350);
+            int heroAgility = random.Next(250, 300);
 
-            int villainHealth = 10000;
-            int villainPower = random.Next(200,500);
-            int villainDefense = random.Next(150,300);
+            int villainHealth = 20000;
+            int villainPower = random.Next(600, 700);
+            int villainDefense = random.Next(200, 300);
             int villainsAgility = random.Next(50, 100);
-            int villainAbility;
 
             Console.Write("Я наконец нашел тебя Гаурон!\nСегодня я смогу иполнить свою клятву. Я убью тебя, и все мои братья, смогут упакоились с миром!");
             Console.Write("\nЯ Эгур, ты помнишь меня? В тот день, когда ты... ");
             Console.Write("\n\nУмолкни, щенок! Я не помню тебя, и про то, о чем ты там мелешь! Я не запоминаю всякую пыль под своими ногами!");
             Console.Write("\nБратья, клятва, месть, смешно! Ты из-за этой ерунды пришел суда сдохнуть? Будь по твоему, я помогу с ними соедениться!");
             Console.WriteLine("\n\n\"Мой путь к тебе был таким долгим и тяжелым, я уже не тот щенок каким был в тот день\" \nЯ убью тебя!");
+
+            Console.WriteLine("\nНавыки:\n1 - Кривое зеркало \"Наносимый урон возвращается атакующему\"");
+            Console.WriteLine("2 - Стальная кожа \"Утраивает броню * 3\"");
+            Console.WriteLine("3 - Молитва \"Востанавливает 2500хп\"");
+            Console.WriteLine("4 - Стальные мускулы \"Увеличивает урон * 3\"");
+            Console.WriteLine("5 - Малекулярное расщипление \"Наносит противнику урон 3000хп, можно испольговать только после (стальная кожа) и (стальные мускулы)\"");
+            Console.WriteLine("6 - Легкость ветра \"Повышает ловкасть * 2\"");
+            Console.WriteLine("7 - Землятрисение \"Наносит урон 500хп\"");
+            Console.WriteLine("8 - Кислотное дыхание \"Разъедает броню пративника, защита / 2\"");
+            Console.WriteLine("9 - Привет, из бездны\" наносит -1000хп противнику и понижает его атаку / 2, можно использовать тольеко после (кислотное дыхание)\"");
+            Console.WriteLine("10 - Шопот смерти \"Наносит урон всему живому по 4000хп, если ипользовано (Легкость ветра) и (привет, из бездны)\"");
 
             Console.WriteLine($"Герой: {heroHealth}хп, {heroPower}сила, {heroDefense}броня, {heroAgility}ловкость.");
             Console.WriteLine($"Злодей: {villainHealth}хп, {villainPower}сила, {villainDefense}броня, {villainsAgility}ловкость.");
@@ -39,18 +49,74 @@ namespace Учеба
 
                 Console.WriteLine("\nЭгур" + heroHealth);
                 Console.WriteLine("Гаурон:" + villainHealth);
+                Console.Write("\nКакой навык вы хотите использовать: ");
+                ability = Console.ReadLine();
 
-                Console.Write("Герой ипользует: ");
-                heroAbility = Convert.ToInt32(Console.ReadLine());
-                Console.Write("Злодей ипользует: ");
-                villainAbility = Convert.ToInt32(Console.ReadLine());
-                switch ()
+                switch (ability)
                 {
+                    case "1":
+                        villainHealth -= villainPower;
+                        heroHealth -= villainPower;
+                        break;
+                    case "2":
+                        heroDefense *= 3;
+                        break;
+                    case "3":
+                        heroHealth += 2500;
+                        break;
+                    case "4":
+                        heroPower *= 3;
+                        break;
+                    case "5":
+                        if (heroDefense > 500)
+                        {
+                            if (heroPower > 500)
+                            {
+                                villainHealth -= 3000;
+                            }
+                        }
+                        else
+                        {
+                            Console.WriteLine("Вам нужно сперва пременить навык стальная кожа и стальные мускулы.");
+                        }
+                        break;
+                    case "6":
 
+                        break;
+                    case "7":
+                        villainHealth -= 500;
+                        break;
+                    case "8":
+                        villainDefense /= 2;
+                        break;
+                    case "9":
+                        if (villainDefense <= 150)
+                        {
+                            villainHealth -= 1000;
+                            villainPower /= 2;
+                        }
+                        else
+                        {
+                            Console.WriteLine("Вам нужно сперва ипользовать (кислотное дыхание)");
+                        }
+                        break;
+                    case "10":
+                        if (heroAgility > 450)
+                        {
+                            if (villainPower <= 350)
+                            {
+                                heroHealth -= 4000;
+                                villainHealth -= 4000;
+                            }
+                        }
+                        else
+                        {
+                            Console.WriteLine("Вам нужно сперва использовать (легкость ветра) и (привет, из бездны)");
+                        }
+                        break;
                 }
                 Console.ReadKey();
             }
-            
 
             if (heroHealth <= 0 && villainHealth <= 0)
             {
@@ -64,7 +130,6 @@ namespace Учеба
             {
                 Console.WriteLine("Вот и еще один глупец сдох! Как там его звали.. а к черту, не помню.\nНо было весело!");
             }
-
         }
     }
 }
