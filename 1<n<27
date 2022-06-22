@@ -1,0 +1,30 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Учеба
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Введите N: ");
+            int n = int.Parse(Console.ReadLine());
+            int k = 0;
+            for (int i = 100; i <1000; i++)
+            {
+                string s = i.ToString();
+
+                if ((s[0] - '0') + (s[1] - '0') + (s[2] - '0') == n)
+                {
+                    Console.WriteLine(i);
+                    k++;
+                }
+            }
+            Console.WriteLine("Количество " + k.ToString());
+            Console.ReadKey();
+        }
+    }
+}
