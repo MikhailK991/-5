@@ -1,0 +1,43 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Учеба
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int minimumLimit = 0;
+            int maximumLimit = 50;
+            Random random = new Random();
+            int lineSum = 0;
+            int columnSum = 0;
+            int[,] mail = new int[3, 3];
+
+            for (int i = 0; i < mail.GetLength(0); i++)
+            {
+                for (int j = 0; j < mail.GetLength(1); j++)
+                {
+                    mail[i, j] = random.Next(minimumLimit, maximumLimit);
+                    Console.Write(mail[i, j] + " ");
+                    if (i == 2)
+                    {
+                        lineSum += mail[i, j];
+                    }
+                    
+                }
+                Console.WriteLine("\n");
+            }
+            columnSum += mail[0, 1] + mail[1, 1] + mail[2, 1];
+
+            Console.WriteLine("Сумма 2 строки массива: " + lineSum);
+            Console.WriteLine("Сумма 1 столбца массива: " + columnSum);
+
+
+        }
+    }
+}
+
