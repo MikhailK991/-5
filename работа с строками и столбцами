@@ -15,7 +15,9 @@ namespace Учеба
             Random random = new Random();
             int lineSum = 0;
             int columnSum = 0;
-            int[,] mail = new int[3, 3];
+            int[,] mail = new int[4, 4];
+
+            int startLoop = 2;
 
             for (int i = 0; i < mail.GetLength(0); i++)
             {
@@ -27,39 +29,22 @@ namespace Учеба
                 Console.WriteLine("\n");
             }
 
-            for (int i = 0; i < mail.GetLength(0); i++)
+            for (; startLoop < mail.GetLength(0); startLoop++)
             {
                 for (int j = 0; j < mail.GetLength(1); j++)
                 {
-                    if (i == 2)
+                    if (startLoop == 2)
                     {
-                        lineSum += mail[i, j];
+                        lineSum += mail[startLoop, j];
                     }
+                    
                 }
+                break;
             }
-
-            for (int i = 0; i < mail.GetLength(0); i++)
-            {
-                for (int j = 0; j < mail.GetLength(1); j++)
-                {
-                } 
-                    if (i == 0)
-                    {
-                        columnSum += mail[0, 1];
-                    }
-                    if (i == 1)
-                    {
-                        columnSum += mail[1, 1];
-                    }
-                    if (i == 2)
-                    {
-                        columnSum += mail[2, 1];
-                    }
-            }
-            
+            columnSum += mail[0, 1] + mail[1, 1] + mail[2, 1];
 
             Console.WriteLine("Сумма 2 строки массива: " + lineSum);
             Console.WriteLine("Сумма 1 столбца массива: " + columnSum);
         }
     }
-} 
+}
