@@ -17,8 +17,6 @@ namespace Учеба
             int columnSum = 0;
             int[,] mail = new int[4, 4];
 
-            int startLoop = 2;
-
             for (int i = 0; i < mail.GetLength(0); i++)
             {
                 for (int j = 0; j < mail.GetLength(1); j++)
@@ -29,15 +27,14 @@ namespace Учеба
                 Console.WriteLine("\n");
             }
 
-            for (; startLoop < mail.GetLength(0); startLoop++)
+            for (int i = 2 ; i < mail.GetLength(0); i++)
             {
                 for (int j = 0; j < mail.GetLength(1); j++)
                 {
-                    if (startLoop == 2)
+                    if (i == 2)
                     {
                         lineSum += mail[startLoop, j];
                     }
-                    
                 }
                 break;
             }
