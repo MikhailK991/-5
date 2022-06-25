@@ -1,0 +1,32 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Учеба
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int minimumLimit = 0;
+            int maximumLimit = 50;
+            Random random = new Random();
+
+            int[] boxes = new int[30];
+            for (int i = 0; i < boxes.Length; i++)
+            {
+                boxes[i] = random.Next(minimumLimit, maximumLimit);
+                Console.WriteLine(boxes[i] + " ");
+            }
+            for (var c = 1; c < boxes.Length - 1; ++c)
+            {
+                if (boxes[c - 1] < boxes[c] && boxes[c + 1] < boxes[c])
+                {
+                    Console.WriteLine("Элемент [" + c + "]: " + boxes[c]);
+                }
+            }
+        }
+    }
+}
