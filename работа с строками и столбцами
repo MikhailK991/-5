@@ -1,4 +1,4 @@
-using System;using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -39,19 +39,6 @@ namespace Учеба
                 columnSum += mail[0, 1] + mail[1, 1] + mail[2, 1] + mail[3, 1];
                 break;
             }
-
-            
-
-            Console.WriteLine("Сумма 2 строки массива: " + lineSum);
-            Console.WriteLine("Сумма 1 столбца массива: " + columnSum);
-        }
-    }
-}
-                    }
-                }
-                break;
-            }
-            columnSum += mail[0, 1] + mail[1, 1] + mail[2, 1];
 
             Console.WriteLine("Сумма 2 строки массива: " + lineSum);
             Console.WriteLine("Сумма 1 столбца массива: " + columnSum);
