@@ -16,8 +16,7 @@ namespace Учеба
             int lineSum = 0;
             int columnSum = 0;
             int[,] mail = new int[4, 4];
-            int sum = 0;
-
+           
             for (int i = 0; i < mail.GetLength(0); i++)
             {
                 for (int j = 0; j < mail.GetLength(1); j++)
