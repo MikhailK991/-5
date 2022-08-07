@@ -1,0 +1,57 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace MK
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int[] userEnteredNumbers = new int[1];
+            int[] arrayExpansion = new int[userEnteredNumbers.Length + 1];
+
+            bool exitFromTheProgram = true;
+            int sum = 0;
+            int enteredNumber;
+
+            while (exitFromTheProgram)
+            {
+                Console.WriteLine("1. Введите число. \n\n2. Получить общюю сумму всех введенных чисел. \n\n3. Выход.\n");
+                Console.Write("Выберете раздел: ");
+
+                switch (Convert.ToInt32(Console.ReadLine()))
+                {
+                    case 1:
+                        Console.Write("Введите число: ");
+                        enteredNumber = Convert.ToInt32(Console.ReadLine());
+
+                        for (int i = 0; i < userEnteredNumbers.Length; i++)
+                        {
+                            userEnteredNumbers[i] += enteredNumber;
+                            arrayExpansion[i] = userEnteredNumbers[i];
+                        }
+                        arrayExpansion[arrayExpansion.Length - 1] = 0;
+                        userEnteredNumbers = arrayExpansion;
+                        break;
+                    case 2:
+                        foreach (int number in userEnteredNumbers)
+                        {
+                            sum += number;
+                        }
+                        Console.WriteLine(sum);
+                        break;
+                    case 3:
+                        exitFromTheProgram = false;
+                        break;
+                    default:
+                        break;
+                }
+                Console.ReadKey();
+                Console.Clear();
+            }
+        }
+    }
+}
