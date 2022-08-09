@@ -11,10 +11,7 @@ namespace MK
         static void Main(string[] args)
         {
             int[] userEnteredNumbers = new int[1];
-            int[] arrayExpansion = new int[userEnteredNumbers.Length + 1];
-
             bool exitFromTheProgram = true;
-            int sum = 0;
             int enteredNumber;
 
             while (exitFromTheProgram)
@@ -24,7 +21,10 @@ namespace MK
 
                 switch (Convert.ToInt32(Console.ReadLine()))
                 {
+                    
                     case 1:
+                        int[] arrayExpansion = new int[userEnteredNumbers.Length + 1];
+
                         Console.Write("Введите число: ");
                         enteredNumber = Convert.ToInt32(Console.ReadLine());
 
@@ -37,11 +37,15 @@ namespace MK
                         userEnteredNumbers = arrayExpansion;
                         break;
                     case 2:
+                        int sum = 0;
+
                         foreach (int number in userEnteredNumbers)
                         {
                             sum += number;
                         }
                         Console.WriteLine(sum);
+
+                        sum = 0;
                         break;
                     case 3:
                         exitFromTheProgram = false;
