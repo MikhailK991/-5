@@ -11,10 +11,10 @@ namespace MK
         static void Main(string[] args)
         {
             int[] userEnteredNumbers = new int[1];
-            bool exitFromTheProgram = true;
+            bool exitTheProgram = true;
             int enteredNumber;
 
-            while (exitFromTheProgram)
+            while (exitTheProgram)
             {
                 Console.WriteLine("1. Введите число. \n\n2. Получить общюю сумму всех введенных чисел. \n\n3. Выход.\n");
                 Console.Write("Выберете раздел: ");
@@ -48,7 +48,7 @@ namespace MK
                         sum = 0;
                         break;
                     case 3:
-                        exitFromTheProgram = false;
+                        exitTheProgram = false;
                         break;
                     default:
                         break;
