@@ -12,50 +12,48 @@ namespace MK
         {
             int[] userEnteredNumbers = new int[1];
             bool exitTheProgram = true;
-            int enteredNumber;
+            int sum = 0;
 
             while (exitTheProgram)
             {
-                Console.WriteLine("1. Введите число. \n\n2. Получить общюю сумму всех введенных чисел. \n\n3. Выход.\n");
-                Console.Write("Выберете раздел: ");
+                string userEnteredData;
+                int enteredNumber = 0;
+                int[] arrayExpansion = new int[userEnteredNumbers.Length + 1];
 
-                switch (Convert.ToInt32(Console.ReadLine()))
+                Console.WriteLine("Вы можете поизвести высчисление общей суммы нужных вам чисел.\nЧто бы получить общее число, напишите: \"Сумма\". \nEсли хотите выйти пропишите: \"Выход\"\n");
+                Console.Write("\n\nВведите число: ");
+                userEnteredData = Console.ReadLine();
+
+                if (userEnteredData.ToLower() == "Выход".ToLower())
                 {
-                    
-                    case 1:
-                        int[] arrayExpansion = new int[userEnteredNumbers.Length + 1];
-
-                        Console.Write("Введите число: ");
-                        enteredNumber = Convert.ToInt32(Console.ReadLine());
-
-                        for (int i = 0; i < userEnteredNumbers.Length; i++)
-                        {
-                            userEnteredNumbers[i] += enteredNumber;
-                            arrayExpansion[i] = userEnteredNumbers[i];
-                        }
-                        arrayExpansion[arrayExpansion.Length - 1] = 0;
-                        userEnteredNumbers = arrayExpansion;
-                        break;
-                    case 2:
-                        int sum = 0;
-
-                        foreach (int number in userEnteredNumbers)
-                        {
-                            sum += number;
-                        }
-                        Console.WriteLine(sum);
-
-                        sum = 0;
-                        break;
-                    case 3:
-                        exitTheProgram = false;
-                        break;
-                    default:
-                        break;
+                    exitTheProgram = false;
                 }
-                Console.ReadKey();
+                else if  (userEnteredData.ToLower() == "Сумма".ToLower())
+                {
+                    Console.WriteLine(sum);
+                    sum = 0;
+                }
+                else 
+                {
+                    enteredNumber = Convert.ToInt32(userEnteredData);
+                }
+
+                for (int i = 0; i < userEnteredNumbers.Length; i++)
+                {
+                    userEnteredNumbers[i] += enteredNumber;
+                    arrayExpansion[i] = userEnteredNumbers[i];
+                }
+                arrayExpansion[arrayExpansion.Length - 1] = 0;
+                userEnteredNumbers = arrayExpansion;
+
+                sum += enteredNumber;
+
+                Console.ReadKey(); 
                 Console.Clear();
+
             }
+            
         }
     }
 }
+
