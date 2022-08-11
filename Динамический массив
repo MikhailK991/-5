@@ -10,50 +10,57 @@ namespace MK
     {
         static void Main(string[] args)
         {
+            const string SumOfNumbers = "Сумма";
+            const string LogoutByUser = "Выход";
             int[] userEnteredNumbers = new int[1];
-            bool exitTheProgram = true;
-            int sum = 0;
+            bool goOut = true;
 
-            while (exitTheProgram)
+            while (goOut)
             {
                 int enteredNumber = 0;
-                const string sumOfNumbers = "Сумма";
-                const string logoutByUser = "Выход";
+                int sum = 0;
 
-                Console.WriteLine($"Вы можете поизвести высчисление суммы, нужных вам чисел.\nЧто бы получить общее число, пропишите: \"{sumOfNumbers}\". \nДля выхода, пропишите: \"{logoutByUser}\".");
+                Console.WriteLine($"Вы можете поизвести высчисление суммы, нужных вам чисел.\nЧто бы получить общее число, пропишите: \"{SumOfNumbers}\". \nДля выхода, пропишите: \"{LogoutByUser}\".");
                 Console.Write("\n\nВведите число: ");
                 string userEnteredData = Console.ReadLine();
 
-                if (userEnteredData.ToLower() == logoutByUser.ToLower())
+                if (userEnteredData.ToLower() == LogoutByUser.ToLower())
                 {
-                    exitTheProgram = false;
+                    goOut = false;
                 }
-                else if (userEnteredData.ToLower() == sumOfNumbers.ToLower())
+                else if (userEnteredData.ToLower() == SumOfNumbers.ToLower())
                 {
+                    foreach (int namber in userEnteredNumbers)
+                    {
+                        sum += namber;
+                    }
                     Console.WriteLine(sum);
+
+                    int[] clearArray = new int[1];
+                    userEnteredNumbers = clearArray;
+
+                    clearArray[0] = 0;
                     sum = 0;
                 }
                 else
                 {
                     enteredNumber = Convert.ToInt32(userEnteredData);
+
+                    int[] arrayExpansion = new int[userEnteredNumbers.Length + 1];
+
+                    for (int i = 0; i < userEnteredNumbers.Length; i++)
+                    {
+                        userEnteredNumbers[i] += enteredNumber;
+                        arrayExpansion[i] = userEnteredNumbers[i];
+                    }
+                    arrayExpansion[arrayExpansion.Length - 1] = 0;
+                    userEnteredNumbers = arrayExpansion;
                 }
-
-                int[] arrayExpansion = new int[userEnteredNumbers.Length + 1];
-
-                for (int i = 0; i < userEnteredNumbers.Length; i++)
-                {
-                    userEnteredNumbers[i] += enteredNumber;
-                    arrayExpansion[i] = userEnteredNumbers[i];
-                }
-                arrayExpansion[arrayExpansion.Length - 1] = 0;
-                userEnteredNumbers = arrayExpansion;
-
-                sum += enteredNumber;
-
                 Console.ReadKey();
                 Console.Clear();
             }
         }
     }
 }
+
 
