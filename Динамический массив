@@ -10,12 +10,12 @@ namespace MK
     {
         static void Main(string[] args)
         {
-            const string SumOfNumbers = "Сумма";
-            const string LogoutByUser = "Выход";
+            const string SumOfNumbers = "Sum";
+            const string LogoutByUser = "Exit";
             int[] userEnteredNumbers = new int[1];
-            bool goOut = true;
+            bool comingOut = true;
 
-            while (goOut)
+            while (comingOut)
             {
                 int enteredNumber = 0;
                 int sum = 0;
@@ -26,7 +26,7 @@ namespace MK
 
                 if (userEnteredData.ToLower() == LogoutByUser.ToLower())
                 {
-                    goOut = false;
+                    comingOut = false;
                 }
                 else if (userEnteredData.ToLower() == SumOfNumbers.ToLower())
                 {
@@ -46,21 +46,21 @@ namespace MK
                 {
                     enteredNumber = Convert.ToInt32(userEnteredData);
 
-                    int[] arrayExpansion = new int[userEnteredNumbers.Length + 1];
+                    int[] Expansion = new int[userEnteredNumbers.Length + 1];
 
                     for (int i = 0; i < userEnteredNumbers.Length; i++)
                     {
                         userEnteredNumbers[i] += enteredNumber;
-                        arrayExpansion[i] = userEnteredNumbers[i];
+                        Expansion[i] = userEnteredNumbers[i];
                     }
-                    arrayExpansion[arrayExpansion.Length - 1] = 0;
-                    userEnteredNumbers = arrayExpansion;
+                    Expansion[Expansion.Length - 1] = 0;
+                    userEnteredNumbers = Expansion;
                 }
+
                 Console.ReadKey();
                 Console.Clear();
             }
         }
     }
 }
-
 
