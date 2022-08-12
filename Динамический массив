@@ -36,10 +36,10 @@ namespace MK
                     }
                     Console.WriteLine(sum);
 
-                    int[] clearArray = new int[1];
-                    userEnteredNumbers = clearArray;
+                    int[] Clear = new int[1];
+                    userEnteredNumbers = Clear;
 
-                    clearArray[0] = 0;
+                    Clear[0] = 0;
                     sum = 0;
                 }
                 else
