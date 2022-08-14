@@ -13,7 +13,7 @@ namespace Учеба
             Random random = new Random();
             int minimumValue = 0;
             int maximumValue = 50;
-            int[] pencils = new int[10];
+            int[] pencils = new int[20];
             int bigNumber;
 
             for (int i = 0; i < pencils.Length; i++)
