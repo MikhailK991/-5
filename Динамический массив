@@ -12,13 +12,12 @@ namespace MK
         {
             const string SumOfNumbers = "Sum";
             const string LogoutByUser = "Exit";
-            int[] userEnteredNumbers = new int[1];
+            int[] userEnteredNumbers = new int[0];
             bool isWorks = true;
 
             while (isWorks)
             {
                 int enteredNumber = 0;
-                int sum = 0;
 
                 Console.WriteLine($"Вы можете поизвести высчисление суммы, нужных вам чисел.\nЧто бы получить общее число, пропишите: \"{SumOfNumbers}\". \nДля выхода, пропишите: \"{LogoutByUser}\".");
                 Console.Write("\n\nВведите число: ");
@@ -30,11 +29,13 @@ namespace MK
                 }
                 else if (userEnteredData.ToLower() == SumOfNumbers.ToLower())
                 {
+                    int sum = 0;
                     foreach (int namber in userEnteredNumbers)
                     {
                         sum += namber;
                     }
                     Console.WriteLine(sum);
+                    sum = 0;
                 }
                 else
                 {
@@ -60,5 +61,4 @@ namespace MK
         }
     }
 }
-
 
