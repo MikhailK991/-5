@@ -1,0 +1,47 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Учеба
+{
+    class Program
+    {
+        static void Main(string[] args) 
+        {
+            const int n = 5;
+            int[] folders = new int[n] { 1, 2, 3, 4, 5 };
+            Console.WriteLine("Исходный массив:\n");
+
+            foreach (int folder in folders)
+            {
+                Console.Write(folder + " ");
+            }
+
+            Console.Write("\n\nНа сколько вы хотите сдвинуть массив: ");
+            int numberToShift = Convert.ToInt16(Console.ReadLine());
+            Console.WriteLine("\n");
+
+            for (int i = 0; i < numberToShift; i++)
+            {
+                int lastNumber = folders[n - 1];
+
+                for (int j = n - 1; j > 0; j--)
+                {
+                    folders[j] = folders[j - 1];
+                }
+                folders[0] = lastNumber;
+            }
+
+            Console.WriteLine("Новый массив: \n");
+
+            foreach (int folder in folders)
+            {
+                Console.Write(folder + " ");
+            }
+
+            Console.ReadKey();
+        }
+    }
+}
