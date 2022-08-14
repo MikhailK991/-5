@@ -1,0 +1,46 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Учеба
+{
+    class Program
+    {
+        static void Main(string[] args) 
+        {
+            Random random = new Random();
+            int minimumValue = 0;
+            int maximumValue = 50;
+            int[] pencils = new int[10];
+            int bigNumber;
+
+            for (int i = 0; i < pencils.Length; i++)
+            {
+                pencils[i] = random.Next(minimumValue, maximumValue);
+            }
+
+            for (int i = 0; i < pencils.Length - 1; i++)
+            {
+                for (int j = i + 1; j < pencils.Length; j++)
+                {
+                    if (pencils[i] > pencils[j])
+                    {
+                        bigNumber = pencils[i];
+                        pencils[i] = pencils[j];
+                        pencils[j] = bigNumber;
+                    }
+                }
+            }
+
+            Console.WriteLine("Отсортированный массив:\n");
+
+            foreach (int pencil in pencils)
+            {
+                Console.Write(pencil + " ");
+            }
+                
+        }
+    }
+}
