@@ -10,10 +10,10 @@ namespace Учеба
     {
         static void Main(string[] args)
         {
-            int[] pens = new int[] { 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25 };
+            int[] numbers = new int[] { 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25 };
             Console.WriteLine("Исходный массив:\n");
 
-            foreach (int number in pens)
+            foreach (int number in numbers)
             {
                 Console.Write(number + " ");
             }
@@ -22,25 +22,29 @@ namespace Учеба
             int numberToShift = Convert.ToInt16(Console.ReadLine());
             Console.WriteLine("\n");
 
+            int numberOfRepetitions = numberToShift * numbers.Length;
+
             for (int i = 0; i < numberToShift; i++)
             {
-                int firstNumber = pens[0];
+                int firstNumber = numbers[0];
 
-                for (int j = 0; j < pens.Length - 1; j++)
+                for (int j = 0; j < numbers.Length - 1 % numberOfRepetitions; j++)
                 {
-                    pens[j] = pens[j + 1];
+                    numbers[j] = numbers[j + 1];
                 }
-                pens[pens.Length - 1] = firstNumber;
+
+                numbers[numbers.Length - 1] = firstNumber;
             }
 
             Console.WriteLine("Новый массив: \n");
 
-            foreach (int number in pens)
+            foreach (int number in numbers)
             {
                 Console.Write(number + " ");
             }
 
             Console.ReadKey();
+
         }
     }
 }
