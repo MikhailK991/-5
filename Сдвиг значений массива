@@ -30,7 +30,6 @@ namespace Учеба
                 {
                     pens[j] = pens[j + 1];
                 }
-
                 pens[pens.Length - 1] = firstNumber;
             }
 
@@ -42,7 +41,6 @@ namespace Учеба
             }
 
             Console.ReadKey();
-
         }
     }
 }
