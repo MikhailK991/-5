@@ -5,38 +5,38 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Учеба
-
 {
     class Program
     {
-        static void Main(string[] args) 
+        static void Main(string[] args)
         {
-            int[] books = new int[] { 11, 12, 13, 14, 15 };
+            int[] pens = new int[] { 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25 };
             Console.WriteLine("Исходный массив:\n");
 
-            foreach (int number in books)
+            foreach (int number in pens)
             {
                 Console.Write(number + " ");
-
             }
+
             Console.Write("\n\nНа сколько вы хотите сдвинуть массив: ");
             int numberToShift = Convert.ToInt16(Console.ReadLine());
             Console.WriteLine("\n");
 
             for (int i = 0; i < numberToShift; i++)
             {
-                int firstNumber = books[0];
+                int firstNumber = pens[0];
 
-                for (int j = 0; j < books.Length - 1; j++)
+                for (int j = 0; j < pens.Length - 1; j++)
                 {
-                    books[j] = books[j + 1];
+                    pens[j] = pens[j + 1];
                 }
-                books[books.Length - 1] = firstNumber;
+
+                pens[pens.Length - 1] = firstNumber;
             }
 
             Console.WriteLine("Новый массив: \n");
 
-            foreach (int number in books)
+            foreach (int number in pens)
             {
                 Console.Write(number + " ");
             }
