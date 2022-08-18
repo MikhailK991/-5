@@ -24,8 +24,6 @@ namespace MK
                 number[i] = random.Next(minimumValue, maximumValue);
             }
 
-            Console.WriteLine();
-
             for (int i = 1; i < number.Length; i++)
             {
                 if (number[i] == number[i - 1])
