@@ -19,22 +19,22 @@ namespace Учеба
             while (isOpen)
             {
                 DrawBar(health, maxHealth, ConsoleColor.Red, 0, '_');
-                DrawBar(mana,  maxMana, ConsoleColor.Blue, 1, '_');
+                DrawBar(mana, maxMana, ConsoleColor.Blue, 1, '_');
                 DrawBar(integrity, maxIntegrity, ConsoleColor.Yellow, 2, '_');
 
                 Console.SetCursorPosition(0, 3);
 
-                Console.Write("Лемит 0-50. Введите число, на которое изменятся жизни:");
+                Console.Write("Лимит 0-50. Введите число, на которое изменится жизнь:");
                 health += Convert.ToInt32(Console.ReadLine());
 
                 Limit(health, minHealth, maxHealth);
 
-                Console.Write("Лемит 0-50. Введите число, на которое изменится мана:");
+                Console.Write("Лимит 0-50. Введите число, на которое изменится мана:");
                 mana += Convert.ToInt32(Console.ReadLine());
 
                 Limit(mana, minMana, maxMana);
 
-                Console.Write("Лемит 0-50. Введите число, на которое изменится выносливость:");
+                Console.Write("Лимит 0-50. Введите число, на которое изменится выносливость:");
                 integrity += Convert.ToInt32(Console.ReadLine());
 
                 Limit(integrity, minIntegrity, maxIntegrity);
@@ -82,8 +82,9 @@ namespace Учеба
         {
             if (value < minValue || value > maxValue)
             {
-                Console.WriteLine("Ошибка, превышен ленит.");
+                Console.WriteLine("Ошибка, превышен линит.");
             }
+
         }
     }
 }
