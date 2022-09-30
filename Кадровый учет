@@ -1,0 +1,150 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace MK
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            bool isOpen = true;
+
+            string[] employeeData = new string[0];
+            string[] jobTitle = new string[0];
+
+            while (isOpen)
+            {
+                Console.WriteLine("1- Добавить досье.\n2- Вывести все досье. \n3- Удалить досье. \n4- Поиск. \n5- Выход.\n");
+                Console.Write("Ввод: ");
+                int request = Convert.ToInt32(Console.ReadLine());
+
+                switch (request)
+                {
+                    case 1:
+                        DossierEntry(ref employeeData, ref jobTitle);
+                        break;
+                    case 2:
+                        DossierOutput(ref employeeData, ref jobTitle);
+                        break;
+                    case 3:
+                        DeletingData(ref employeeData, ref jobTitle);
+                        break;
+                    case 4:
+                        DossierSearch(ref employeeData, ref jobTitle);
+                        break;
+                    case 5:
+                        isOpen = false;
+                        break;
+                }
+                Console.ReadKey();
+                Console.Clear();
+            }
+        }
+
+        static void DossierEntry(ref string[] employeeData, ref string[] jobTitle)
+        {
+            string[] tempEmployeeData = new string[employeeData.Length + 1];
+            string[] tempJobTitle = new string[jobTitle.Length + 1];
+
+            for (int i = 0; i < employeeData.Length; i++)
+            {
+                tempEmployeeData[i] = employeeData[i];
+                tempJobTitle[i] = jobTitle[i];
+            }
+
+            employeeData = tempEmployeeData;
+            jobTitle = tempJobTitle;
+
+            Console.WriteLine("\n\nВведите данные сотрудника\"ФИО\": ");
+            employeeData[employeeData.Length - 1] = Console.ReadLine();
+            Console.WriteLine("\nВведите должность сотрудника: ");
+            jobTitle[jobTitle.Length - 1] = Console.ReadLine();
+        }
+
+        static void DossierOutput(ref string[] employeeData, ref string[] jobTitle)
+        {
+            Console.WriteLine("\nДосье:");
+
+            for (int i = 0; i < employeeData.Length; i++)
+            {
+                Console.WriteLine($"{i + 1}) {employeeData[i]} -- {jobTitle[i]}");
+            }
+        }
+
+        static void DeletingData(ref string[] employeeData, ref string[] jobTitle)
+        {
+            int deleteDocument;
+            string[] tempEmployeeData = new string[employeeData.Length - 1];
+            string[] tempJobTitle = new string[jobTitle.Length - 1];
+
+            Console.Write("\nВведите номер документа, которых нужно удалить: ");
+            deleteDocument = Convert.ToInt32(Console.ReadLine());
+
+            for (int i = 0; i < (deleteDocument - 1); i++)
+            {
+                tempEmployeeData[i] = employeeData[i];
+                tempJobTitle[i] = jobTitle[i];
+            }
+
+            for (int i = deleteDocument + 1; i < employeeData.Length; i++)
+            {
+                tempEmployeeData[i - 1] = employeeData[i];
+                tempJobTitle[i - 1] = jobTitle[i];
+            }
+
+            employeeData = tempEmployeeData;
+            jobTitle = tempJobTitle;
+
+            Console.WriteLine("\nДанные удалены.");
+        }
+
+        static void DossierSearch(ref string[] employeeData, ref string[] jobTitle)
+        {
+            string dossierSearch;
+            string employeeSearch;
+            int serialNumber;
+            bool employeeFound = false;
+
+            Console.WriteLine("\nПоиск сотрудника.");
+            Console.WriteLine("\n1-Поиск по порядковому номеру введите.\n2-Поиск по фио или должности.");
+            Console.Write("\nВвод: ");
+            dossierSearch = Console.ReadLine();
+
+            if (dossierSearch == "1")
+            {
+                Console.Write("\nВведите порядковый номер сотрудника: ");
+                serialNumber = Convert.ToInt32(Console.ReadLine());
+
+                for (int i = 0; i == serialNumber; i++)
+                {
+                    Console.WriteLine($"{serialNumber}) {employeeData[serialNumber - 1]} -- {jobTitle[serialNumber - 1]}");
+                }
+            }
+            else if (dossierSearch == "2")
+            {
+                Console.WriteLine("\nВведите данные сотрудника:");
+                employeeSearch = Console.ReadLine();
+
+                for (int i = 0; i < employeeData.Length; i++)
+                {
+                    if (employeeSearch.ToLower() == employeeData[i].ToLower() || employeeSearch.ToLower() == jobTitle[i].ToLower())
+                    {
+                        Console.WriteLine($"{i + 1}) {employeeData[i]} -- {jobTitle[i]}");
+                        employeeFound = true;
+                    }
+                }
+                if (employeeFound == false)
+                {
+                    Console.WriteLine("\nОшибка, сотрудник не найден.");
+                }
+            }
+            else
+            {
+                Console.WriteLine("\nОшибка, не верно выбран раздел.");
+            }
+        }
+    }
+}
