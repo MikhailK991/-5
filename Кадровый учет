@@ -83,7 +83,7 @@ namespace MK
             Console.Write("\nВведите номер документа, которых нужно удалить: ");
             deleteDocument = Convert.ToInt32(Console.ReadLine());
 
-            for (int i = 0; i < (deleteDocument - 1); i++)
+            for (int i = 0; i < deleteDocument - 1; i++)
             {
                 tempEmployeeData[i] = employeeData[i];
                 tempJobTitle[i] = jobTitle[i];
