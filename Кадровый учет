@@ -128,7 +128,6 @@ namespace MK
 
         static void DossierSearch(ref string[] employeeData, ref string[] jobTitle)
         {
-            string responseToRequest = " ";
             string dossierSearch;
             string employeeSearch;
             int serialNumber;
