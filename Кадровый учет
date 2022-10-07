@@ -10,6 +10,12 @@ namespace MK
     {
         static void Main(string[] args)
         {
+            const string AddDossierCommand = "1";
+            const string RemoveAllDossiers = "2";
+            const string DeleteDossier = "3";
+            const string SearchCommand = "4";
+            const string CommandExit = "5";
+
             bool isOpen = true;
 
             string[] employeeData = new string[0];
@@ -17,25 +23,25 @@ namespace MK
 
             while (isOpen)
             {
-                Console.WriteLine("1- Добавить досье.\n2- Вывести все досье. \n3- Удалить досье. \n4- Поиск. \n5- Выход.\n");
+                Console.WriteLine($"{AddDossierCommand}- Добавить досье.\n{RemoveAllDossiers}- Вывести все досье. \n{DeleteDossier}- Удалить досье. \n{SearchCommand}- Поиск досье. \n{CommandExit}- Выход.\n");
                 Console.Write("Ввод: ");
-                int request = Convert.ToInt32(Console.ReadLine());
+                string request = Console.ReadLine();
 
                 switch (request)
                 {
-                    case 1:
+                    case AddDossierCommand:
                         DossierEntry(ref employeeData, ref jobTitle);
                         break;
-                    case 2:
-                        DossierOutput(ref employeeData, ref jobTitle);
+                    case RemoveAllDossiers:
+                        DossierOutput(employeeData, jobTitle);
                         break;
-                    case 3:
+                    case DeleteDossier:
                         DeletingData(ref employeeData, ref jobTitle);
                         break;
-                    case 4:
+                    case SearchCommand:
                         DossierSearch(ref employeeData, ref jobTitle);
                         break;
-                    case 5:
+                    case CommandExit:
                         isOpen = false;
                         break;
                 }
@@ -47,25 +53,30 @@ namespace MK
 
         static void DossierEntry(ref string[] employeeData, ref string[] jobTitle)
         {
-            string[] tempEmployeeData = new string[employeeData.Length + 1];
-            string[] tempJobTitle = new string[jobTitle.Length + 1];
-
-            for (int i = 0; i < employeeData.Length; i++)
-            {
-                tempEmployeeData[i] = employeeData[i];
-                tempJobTitle[i] = jobTitle[i];
-            }
-
-            employeeData = tempEmployeeData;
-            jobTitle = tempJobTitle;
-
             Console.WriteLine("\n\nВведите данные сотрудника\"ФИО\": ");
+            employeeData = ArrayExpansion(employeeData);
             employeeData[employeeData.Length - 1] = Console.ReadLine();
+
             Console.WriteLine("\nВведите должность сотрудника: ");
+            jobTitle = ArrayExpansion(jobTitle);
             jobTitle[jobTitle.Length - 1] = Console.ReadLine();
         }
 
-        static void DossierOutput(ref string[] employeeData, ref string[] jobTitle)
+        static string[] ArrayExpansion(string[] arrayExpansion)
+        {
+            string[] extendedArray = new string[arrayExpansion.Length + 1];
+
+            for (int i = 0; i < arrayExpansion.Length; i++)
+            {
+                extendedArray[i] = arrayExpansion[i];
+            }
+
+            arrayExpansion = extendedArray;
+
+            return arrayExpansion;
+        }
+
+        static void DossierOutput(string[] employeeData, string[] jobTitle)
         {
             Console.WriteLine("\nДосье:");
 
@@ -79,8 +90,6 @@ namespace MK
         {
             int deleteDocument;
             int minimumDocument = 0;
-            string[] tempEmployeeData = new string[employeeData.Length - 1];
-            string[] tempJobTitle = new string[jobTitle.Length - 1];
 
             Console.Write("\nВведите номер документа, которых нужно удалить: ");
             deleteDocument = Convert.ToInt32(Console.ReadLine());
@@ -91,27 +100,35 @@ namespace MK
             }
             else
             {
-                for (int i = 0; i < deleteDocument - 1; i++)
-                {
-                    tempEmployeeData[i] = employeeData[i];
-                    tempJobTitle[i] = jobTitle[i];
-                }
-
-                for (int i = deleteDocument; i < employeeData.Length; i++)
-                {
-                    tempEmployeeData[i - 1] = employeeData[i];
-                    tempJobTitle[i - 1] = jobTitle[i];
-                }
-
-                employeeData = tempEmployeeData;
-                jobTitle = tempJobTitle;
+                employeeData = ArrayReduction(employeeData, deleteDocument);
+                jobTitle = ArrayReduction(jobTitle, deleteDocument);
 
                 Console.WriteLine("\nДанные удалены.");
             }
         }
+        static string[] ArrayReduction(string[] arrayReduction, int index)
+        {
+            string[] dataReduction = new string[arrayReduction.Length - 1];
+
+
+            for (int i = 0; i < index - 1; i++)
+            {
+                dataReduction[i] = arrayReduction[i];
+            }
+
+            for (int i = index; i < arrayReduction.Length; i++)
+            {
+                dataReduction[i - 1] = arrayReduction[i];
+            }
+
+            arrayReduction = dataReduction;
+
+            return arrayReduction;
+        }
 
         static void DossierSearch(ref string[] employeeData, ref string[] jobTitle)
         {
+            string responseToRequest = " ";
             string dossierSearch;
             string employeeSearch;
             int serialNumber;
@@ -134,10 +151,8 @@ namespace MK
                 }
                 else
                 {
-                    Console.WriteLine($"{serialNumber}) {employeeData[serialNumber - 1]} -- {jobTitle[serialNumber - 1]}");  
+                    Console.WriteLine($"{serialNumber}) {employeeData[serialNumber - 1]} -- {jobTitle[serialNumber - 1]}");
                 }
-               
-                
             }
             else if (dossierSearch == "2")
             {
