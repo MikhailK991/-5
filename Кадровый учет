@@ -11,7 +11,7 @@ namespace MK
         static void Main(string[] args)
         {
             const string AddDossierCommand = "1";
-            const string RemoveAllDossiers = "2";
+            const string ShowAllDossiers = "2";
             const string DeleteDossier = "3";
             const string SearchCommand = "4";
             const string CommandExit = "5";
@@ -23,23 +23,23 @@ namespace MK
 
             while (isOpen)
             {
-                Console.WriteLine($"{AddDossierCommand}- Добавить досье.\n{RemoveAllDossiers}- Вывести все досье. \n{DeleteDossier}- Удалить досье. \n{SearchCommand}- Поиск досье. \n{CommandExit}- Выход.\n");
+                Console.WriteLine($"{AddDossierCommand}- Добавить досье.\n{ShowAllDossiers}- Вывести все досье. \n{DeleteDossier}- Удалить досье. \n{SearchCommand}- Поиск досье. \n{CommandExit}- Выход.\n");
                 Console.Write("Ввод: ");
                 string request = Console.ReadLine();
 
                 switch (request)
                 {
                     case AddDossierCommand:
-                        DossierEntry(ref employeeData, ref jobTitle);
+                        RecordDossier(ref employeeData, ref jobTitle);
                         break;
-                    case RemoveAllDossiers:
+                    case ShowAllDossiers:
                         DossierOutput(employeeData, jobTitle);
                         break;
                     case DeleteDossier:
                         DeletingData(ref employeeData, ref jobTitle);
                         break;
                     case SearchCommand:
-                        DossierSearch(ref employeeData, ref jobTitle);
+                        DossierSearch(employeeData, jobTitle);
                         break;
                     case CommandExit:
                         isOpen = false;
@@ -51,7 +51,7 @@ namespace MK
             }
         }
 
-        static void DossierEntry(ref string[] employeeData, ref string[] jobTitle)
+        static void RecordDossier(ref string[] employeeData, ref string[] jobTitle)
         {
             Console.WriteLine("\n\nВведите данные сотрудника\"ФИО\": ");
             employeeData = ArrayExpansion(employeeData);
@@ -126,54 +126,69 @@ namespace MK
             return arrayReduction;
         }
 
-        static void DossierSearch(ref string[] employeeData, ref string[] jobTitle)
+        static void DossierSearch(string[] employeeData, string[] jobTitle)
         {
+            const string SearchByNumber = "1";
+            const string SurnameSearch = "2";
             string dossierSearch;
-            string employeeSearch;
-            int serialNumber;
-            int minimumDocument = 0;
-            bool employeeFound = false;
+            string endOfSearch = "";
 
             Console.WriteLine("\nПоиск сотрудника.");
-            Console.WriteLine("\n1-Поиск по порядковому номеру введите.\n2-Поиск по фио или должности.");
+            Console.WriteLine($"\n{SearchByNumber}- Поиск по порядковому номеру введите.\n{SurnameSearch}- Поиск по фио или должности.");
             Console.Write("\nВвод: ");
             dossierSearch = Console.ReadLine();
 
-            if (dossierSearch == "1")
+            if (dossierSearch == SearchByNumber)
             {
-                Console.Write("\nВведите порядковый номер сотрудника: ");
-                serialNumber = Convert.ToInt32(Console.ReadLine());
-
-                if (employeeData.Length < serialNumber - 1 || serialNumber <= minimumDocument)
-                {
-                    Console.WriteLine("Ошибка. Досье не найдено.");
-                }
-                else
-                {
-                    Console.WriteLine($"{serialNumber}) {employeeData[serialNumber - 1]} -- {jobTitle[serialNumber - 1]}");
-                }
+                SearchBySerialNumber(employeeData, jobTitle);
             }
-            else if (dossierSearch == "2")
+            else if (dossierSearch == SurnameSearch)
             {
-                Console.WriteLine("\nВведите данные сотрудника:");
-                employeeSearch = Console.ReadLine();
-
-                for (int i = 0; i < employeeData.Length; i++)
-                {
-                    if (employeeSearch.ToLower() == employeeData[i].ToLower() || employeeSearch.ToLower() == jobTitle[i].ToLower())
-                    {
-                        Console.WriteLine($"{i + 1}) {employeeData[i]} -- {jobTitle[i]}");
-                        employeeFound = true;
-                    }
-                }
-                if (employeeFound == false)
-                {
-                    Console.WriteLine("\nОшибка. Сотрудник не найден.");
-                }
+                SearchByInitial(employeeData, jobTitle);
             }
             else
             {
                 Console.WriteLine("\nОшибка. Не верно выбран раздел.");
+            }
+        }
+
+        static void SearchBySerialNumber(string[] employeeData, string[] jobTitle)
+        {
+            int minimumDocument = 0;
+            int serialNumber;
+
+            Console.Write("\nВведите порядковый номер сотрудника: ");
+            serialNumber = Convert.ToInt32(Console.ReadLine());
+
+            if (employeeData.Length < serialNumber - 1 || serialNumber <= minimumDocument)
+            {
+                Console.WriteLine("\nОшибка. Досье не найдено.");
+            }
+            else
+            {
+                Console.WriteLine($"{serialNumber}) {employeeData[serialNumber - 1]} -- {jobTitle[serialNumber - 1]}");
+            }
+        }
+
+        static void SearchByInitial(string[] employeeData, string[] jobTitle)
+        {
+            string employeeSearch;
+            bool employeeFound = false;
+
+            Console.WriteLine("\nВведите данные сотрудника:");
+            employeeSearch = Console.ReadLine();
+
+            for (int i = 0; i < employeeData.Length; i++)
+            {
+                if (employeeSearch.ToLower() == employeeData[i].ToLower() || employeeSearch.ToLower() == jobTitle[i].ToLower())
+                {
+                    Console.WriteLine($"{i + 1}) {employeeData[i]} -- {jobTitle[i]}");
+                    employeeFound = true;
+                }
+            }
+            if (employeeFound == false)
+            {
+                Console.WriteLine("\nОшибка. Сотрудник не найден.");
             }
         }
     }
