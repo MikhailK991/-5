@@ -1,0 +1,50 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Учеба
+{
+    class Program
+    {
+        static void Main(string[] args) 
+        {
+            int[] array = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+            ArrayOutput(array);
+            shuffle(array);
+            ArrayOutput(array);
+        }
+
+        static void shuffle(int[] array)
+        {
+            Random random = new Random();
+            int minValue = 0;
+            int maxValue;
+
+            int tempValue;
+            int lastIndex;
+            int randomIndex;
+            
+            lastIndex = array.Length - 1;
+
+            while (lastIndex > 0)
+            {
+                tempValue = array[lastIndex];
+                randomIndex = new Random().Next(minValue, lastIndex);
+                array[lastIndex] = array[randomIndex];
+                array[randomIndex] = tempValue;
+                lastIndex--;
+            }
+        }
+
+        static void ArrayOutput(int[] array)
+        {
+            foreach (int nunber in array)
+            {
+                Console.Write(nunber + " ");
+            }
+            Console.WriteLine("\n");
+        }
+    }
+}
