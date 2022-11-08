@@ -26,7 +26,7 @@ namespace Учеба
             
             lastIndex = array.Length - 1;
 
-            while (lastIndex > 0)
+            while (lastIndex > minValue)
             {
                 tempValue = array[lastIndex];
                 randomIndex = new Random().Next(minValue, lastIndex);
