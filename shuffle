@@ -11,12 +11,12 @@ namespace Учеба
         static void Main(string[] args) 
         {
             int[] array = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
-            ArrayOutput(array);
-            shuffle(array);
-            ArrayOutput(array);
+            OutputAnArray(array);
+            Shuffle(array);
+            OutputAnArray(array);
         }
 
-        static void shuffle(int[] array)
+        static void Shuffle(int[] array)
         {
             Random random = new Random();
             int minValue = 0;
@@ -38,7 +38,7 @@ namespace Учеба
             }
         }
 
-        static void ArrayOutput(int[] array)
+        static void OutputAnArray(int[] array)
         {
             foreach (int nunber in array)
             {
