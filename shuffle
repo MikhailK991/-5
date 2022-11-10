@@ -21,18 +21,15 @@ namespace Учеба
             Random random = new Random();
             int minValue = 0;
             int tempValue;
-            int lastIndex;
             int randomIndex;
-            
-            lastIndex = array.Length - 1;
+            int workingIndex = array.Length - 1;
 
-            while (lastIndex > minValue)
+            for (int i = 0; i <= workingIndex; workingIndex--)
             {
-                tempValue = array[lastIndex];
-                randomIndex = new Random().Next(minValue, lastIndex);
-                array[lastIndex] = array[randomIndex];
+                tempValue = array[workingIndex];
+                randomIndex = new Random().Next(minValue, workingIndex);
+                array[workingIndex] = array[randomIndex];
                 array[randomIndex] = tempValue;
-                lastIndex--;
             }
         }
 
